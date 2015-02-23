@@ -1,5 +1,8 @@
 
 
+body{
+  color:orange;
+}
 #scorecard{
 	font-weight: bold;
 }
@@ -14,15 +17,22 @@ label{
 
 .questionText{
 	font-family: sans-serif;
+  color:orange;
+  padding-bottom: 2em;
 }
 
-h1{
+#wrapper h1{
+  padding-top:2em;
+  color: orange;
+  font-size:3em;
+  margin: 0 auto;
+  width: 600px;
 	text-align: left;
 }
-#wrapper{
+#question-container, #scorecard{
 	margin: 0 auto;
 	width: 600px;
-	padding: 3em;
+	padding-top: 3em;
 }
 
 input[type=button]{
@@ -45,17 +55,35 @@ input[type=button]:hover {
     background-color:rgba(255,204,0,0.8);
 }
     
+.red{
+	background-color: red;
+}
 
+#wrapper{
+  height: 100%;
+}
 
+button .next{
+  background-color: orange;
+  padding: 2em;
+}
 
-.images {
-  position: fixed;
-  top:0;
--moz-background-size: cover;
--webkit-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-max-height: 100%;
-max-width: 100%;
-overflow: hidden;
+.images{
+	  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
 }

@@ -20,7 +20,8 @@ quizApp.totalCorrect = 0;
 //ADDED GLOBAL VARIABLE UI BIND ******************
 var qcontainer = $("#question-container");
 var scoreCard = $('#scorecard');
-var acontainer = $('.background');
+var acontainer= $('.images');
+var next= $('.next');
 
 // 2- Contain all of our question data
 quizApp.questionData = [
@@ -132,7 +133,8 @@ quizApp.render = function(){
 	// Empty question wrapper before adding content ie each question
 	
 	//acontainer.empty();
- acontainer.empty();
+
+
 	qcontainer.empty();
 	qcontainer.fadeIn(600);
 
@@ -157,7 +159,7 @@ quizApp.render = function(){
 
 	// Adds the array items the choices html string
 	$.each( currentQuestionData.choices, function( counter, choice ){
-		choicesHTML += "<div class='spacer'><input type='radio' name='mustbesamename' value='"+counter+"' />" +"<label for ='radio1'>" +choice+ "</label>"+ "</div>";
+		choicesHTML += "<input type='radio' name='mustbesamename' value='"+counter+"' />" + choice + "<br />"; // "<label for =''>" ++ "</label><br />";
 	});
 
 	// Adds submit button and closing form tag to choices template
@@ -183,8 +185,18 @@ quizApp.bindUI = function(){
 	$(document).on('click', '#checkAnswer', quizApp.processInput );
 
 	// Prevent form from submitting
-	$(document).on('submit', '#choices', function(event){ 
-		event.preventDefault });
+	$(document).on('submit', '#choices', function(event){ event.preventDefault(); });
+
+
+	/** 
+	 * NOTE: You may want to add a "next" link instead of making this a click on the image.
+	 * I say this because in the way you had it originally, this would re-run the render function
+	 * without updating the currentQuestion, so it just goes back to the first.
+	 * 
+	 */
+
+	// Click handler for images
+	// $(document).on('click', '.images', quizApp.processInput );
 };
 
 // 5- A way to go to next questions
@@ -192,12 +204,9 @@ quizApp.processInput = function(event){
 	// Cancel form submission
 	event.preventDefault();
 
-	
-
+	// Get the info for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
-
-	
 	// Get the current selected choice and turn string '0' into a numnber 1
 	var selectedItem = parseInt($(":checked").val(), 10);
 	
@@ -212,45 +221,43 @@ quizApp.processInput = function(event){
 		quizApp.totalCorrect++;	
 
 	} 
- 
-
-
-	//acontainer.empty();
-	//acontainer.fadeIn(500);
-
-
-
-
-	var answerTemplate = "";
+	// 	Increment current question counter regardless of correctness
 	
 
-	answerTemplate += acontainer.addClass('images').css({'cursor': 'pointer','background': 'url("'+currentQuestionData.image+'")', 'background-size': 'cover', 'background-repeat': 'no-repeat', 'min-width': '100%', 'min-height': '100%', 'z-index': '-100'});
+	// Prepare container for content
+//	acontainer.empty();
+//	acontainer.fadeIn(500);
+
+
+	// Prepare answer template
+	/** 
+	 * NOTE: Notice how i changed the answer template setup. 
+	 * You already have access to the acontainer object, so you can change the css on it via jquery
+	 * instead of trying to make a string.
+	 */
+
+	 acontainer.empty();
 	
 	
-//qcontainer.empty();
-acontainer.append(answerTemplate);
+	acontainer.fadeIn(500).css({'background-image': 'url("'+currentQuestionData.image+'")'});
+	 next.show();	
 
-$(document).on('click', '.images' , function(){
-		quizApp.currentQuestion++;
-	quizApp.render();
-
-
+	acontainer.on('click', 'next' , function(){
+		acontainer.empty();
+		render();
+	
 });
 
-	
 
 
+	//qcontainer.empty();
+	// acontainer.append(answerTemplate);
 
 
-
-
-
-
-	
+//acontainer.fadeOut(1500);
 
 	// 6- Display current place in quiz.
 	// Update UI to show current results
-	
 	
 
 	var doneTemplate ="";
@@ -282,7 +289,7 @@ quizApp.finalScore = function(){
 	scoreCard.empty();
 	var finalscore= $('#finalscore');
 	//$('.bgImg').fadeIn(1000);
-	//$('#background').addClass('bgImg');
+	$('#background').addClass('bgImg');
 
 		scoreTemplate = "You scored "+quizApp.totalCorrect +" out of "+ quizApp.questionData.length ;
 
