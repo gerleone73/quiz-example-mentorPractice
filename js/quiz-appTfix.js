@@ -136,8 +136,11 @@ quizApp.render = function(){
 	//acontainer.empty();
 
 
+	acontainer.removeClass('background');
 	qcontainer.empty();
 	qcontainer.fadeIn(600);
+
+
 
 	//acontainer.fadeOut(1500);
 //currentQuestionData++;
@@ -239,15 +242,24 @@ quizApp.processInput = function(event){
 
 	 acontainer.empty();
 	
-	
-	acontainer.fadeIn(500).css({'background-image': 'url("'+currentQuestionData.image+'")'});
-	 next.show();	
 
-	acontainer.on('click', '#next' , function(){
-		acontainer.empty();
-		quizapp.render();
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).addClass('background').fadeIn(900).append("<button id='next'>Next</button>");
+
+	//$(document).on('click', '#next' , quizApp.render );
+
 	
-});
+	
+	 $('#next').click(function(){
+	 	$('.background').fadeOut(5600);
+       quizApp.render();
+       console.log('clciked');
+    });
+
+	 currentQuestionData.question++;
+		
+
+	
+
 
 
 

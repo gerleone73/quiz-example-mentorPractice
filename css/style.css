@@ -1,7 +1,8 @@
 
 
-body{
+.images{
   color:orange;
+  background: grey;
 }
 #scorecard{
 	font-weight: bold;
@@ -69,7 +70,7 @@ button #next{
   display:hidden;
 }
 
-.images{
+.background{
 	  /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
   
@@ -87,4 +88,5 @@ button #next{
   /* Set a background color that will be displayed
      while the background image is loading */
   background-color: #464646;
+  color:orange;
 }
