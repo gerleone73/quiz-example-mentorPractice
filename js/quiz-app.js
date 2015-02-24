@@ -218,7 +218,7 @@ quizApp.processInput = function(event){
 	//acontainer.empty();
 	//acontainer.fadeIn(500);
 
-
+/*
 
 
 	var answerTemplate = "";
@@ -237,7 +237,7 @@ $(document).on('click', '.images' , function(){
 
 });
 
-	
+	*/
 
 
 
@@ -251,7 +251,7 @@ $(document).on('click', '.images' , function(){
 	// 6- Display current place in quiz.
 	// Update UI to show current results
 	
-	
+	quizApp.currentQuestion++;
 
 	var doneTemplate ="";
 
