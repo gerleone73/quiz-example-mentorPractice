@@ -22,7 +22,7 @@ var qcontainer = $("#question-container");
 var scoreCard = $('#scorecard');
 var acontainerHTML= $('.images') [0];
 var acontainer = $(acontainerHTML);
-var next= $('.next'); // that wont either
+var next= $('#next'); 
 
 // 2- Contain all of our question data
 quizApp.questionData = [
@@ -243,9 +243,9 @@ quizApp.processInput = function(event){
 	acontainer.fadeIn(500).css({'background-image': 'url("'+currentQuestionData.image+'")'});
 	 next.show();	
 
-	acontainer.on('click', 'next' , function(){
+	acontainer.on('click', '#next' , function(){
 		acontainer.empty();
-		render();
+		quizapp.render();
 	
 });
 

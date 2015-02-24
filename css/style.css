@@ -63,9 +63,10 @@ input[type=button]:hover {
   height: 100%;
 }
 
-button .next{
+button #next{
   background-color: orange;
   padding: 2em;
+  display:hidden;
 }
 
 .images{
