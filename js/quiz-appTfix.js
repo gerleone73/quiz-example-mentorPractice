@@ -20,8 +20,9 @@ quizApp.totalCorrect = 0;
 //ADDED GLOBAL VARIABLE UI BIND ******************
 var qcontainer = $("#question-container");
 var scoreCard = $('#scorecard');
-var acontainer= $('.images');
-var next= $('.next');
+var acontainerHTML= $('.images') [0];
+var acontainer = $(acontainerHTML);
+var next= $('.next'); // that wont either
 
 // 2- Contain all of our question data
 quizApp.questionData = [
