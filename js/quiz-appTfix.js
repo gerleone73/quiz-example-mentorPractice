@@ -253,10 +253,10 @@ quizApp.processInput = function(event){
 	 	acontainer.css({'background-image': ''})
 	 	$('#next').remove();
        quizApp.render();
-       console.log('clciked');
+       console.log('clicked');
     });
 
-	 currentQuestionData.question++;
+	 quizApp.currentQuestion++;
 		
 
 	
