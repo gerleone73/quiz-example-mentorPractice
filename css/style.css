@@ -22,8 +22,9 @@ label{
 .questionText{
 	
   color:orange;
-  padding-bottom: 2em;
-  font-size: 2em;
+  padding: 2em 0;
+  font-size: 1.75em;
+  margin-top: -1em;
 
 }
 
@@ -38,8 +39,9 @@ label{
 }
 #question-container, #scorecard{
 	margin: 0 auto;
-	width: 800px;
-	padding-top: 3em;
+	width: 900px;
+ 
+	
 }
 
 input[type=radio]{
