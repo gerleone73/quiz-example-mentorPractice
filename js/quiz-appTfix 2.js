@@ -38,6 +38,8 @@ quizApp.questionData = [
                             "Oscar Wilde"
                         ],
             "correct" : 1,
+            "theAnswer" : "Woody Allen"
+
             
         },
         {
@@ -53,6 +55,7 @@ quizApp.questionData = [
             				
                         ],
             "correct" : 0,
+            "theAnswer" : "David Carradine"
             
         },
         {
@@ -67,6 +70,7 @@ quizApp.questionData = [
                             "Oscar Wilde"
                         ],
             "correct" : 3,
+            "theAnswer" : "Alfred Hitchcock"
             
         },
           {
@@ -81,6 +85,8 @@ quizApp.questionData = [
                             "Oscar Wilde"
                         ],
             "correct" : 2,
+            "theAnswer" : "Jean Luc Godard"
+
            
         },
           {
@@ -95,6 +101,7 @@ quizApp.questionData = [
                             "Oscar Wilde"
                         ],
             "correct" : 5,
+            "theAnswer" : "Oscar Wilde"
             
         },
          {
@@ -109,6 +116,7 @@ quizApp.questionData = [
                             "Oscar Wilde"
                         ],
             "correct" : 4,
+            "theAnswer" : "Kurt Vonnegut"
             
         }
 ];
@@ -256,7 +264,7 @@ quizApp.showAnswer = function(){
 	qcontainer.fadeOut();
 
 	// Setting background and next button
-	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button id='next'>Next</button>").append("<div class='quote'>" +currentQuestionData.question+ "</div>");
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button id='next'>Next</button>").append("<div class='quote'>" +currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</div>");
 	//;
 	//acontainer.
 };
