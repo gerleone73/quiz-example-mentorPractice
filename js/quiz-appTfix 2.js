@@ -5,12 +5,12 @@
 var quizApp = {};
 
 // Pseudo Code:
-// 1- Random Variables for cycling between the questions  ( check )
-// 2- Contain all of our question data 	( check )
-// 3- Fill in the html template to show the data  	( this.render() )
-// 4- A way to handle user input  	( this.bindUI )
-// 5- A way to go to next questions  ( this.processInput )
-// 6- Display current place in quiz ( this.processInput calls render ).
+	// 1- Random Variables for cycling between the questions  ( check )
+	// 2- Contain all of our question data 	( check )
+	// 3- Fill in the html template to show the data  	( this.render() )
+	// 4- A way to handle user input  	( this.bindUI )
+	// 5- A way to go to next questions  ( this.processInput )
+	// 6- Display current place in quiz ( this.processInput calls render ).
 
 // Start Code
 // 1- Random Variables for cycling between the questions
@@ -113,49 +113,36 @@ quizApp.questionData = [
         }
 ];
 
+// Function to start the app
 quizApp.init = function(){
-
-
 	// Prints content to the page
-//	this.render();
+	this.render();
 
 	// Prepares bindings on elements for event handlers
-	this.bindUI();
+	this.bindUI();	
 
-	this.render();
-	
-}
+
+};
 
 // 3- Fill in the html template to show the data
 // 3a - Need tp create the template
 // 3b - Need to add it to the page with the question data
 quizApp.render = function(){
-	// Setting where we will add content
-	//var qcontainer = $("#question-container");
-
-	// Empty question wrapper before adding content ie each question
-	
+	// Empty question wrapper before adding content ie each question	
 	//acontainer.empty();
-
-	acontainer.css({'background-image': ''})
-	acontainer.fadeIn(600);
+	//acontainer.fadeIn(600);
 	qcontainer.empty();
 	qcontainer.fadeIn(600);
 
-	acontainer.css({'background-image': ''});
-
 	//acontainer.fadeOut(1500);
-//currentQuestionData++;
-
+	//currentQuestionData++;
 
 	// Get the content for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
 
 	// Create the html for the question template
 	var questionTemplate = "";
-	//	questionTemplate = "<p class='score'>"+ this.totalCorrect +" out of "+ this.questionData.length +"</p>";
 		questionTemplate += "<p class='questionText'>"+ currentQuestionData.question +"</p>";
-	//	questionTemplate += "<img class='images' src="+currentQuestionData.image+">";
 
 	// Creating html for choices radio buttons
 	var choicesHTML = "<form id='choices'>";
@@ -174,42 +161,24 @@ quizApp.render = function(){
 	// Adds chioces template to main template
 	questionTemplate += choicesHTML;
 
-	// Adds Explanation text to main template (hidden by default)
-	//questionTemplate += "<p class='explanation'>"+currentQuestionData.explanation+"</p>";
-
-
 	// Add template to the page
 	qcontainer.append(questionTemplate);
-
-
-	
 };
 
 // 4- A way to handle user input
 quizApp.bindUI = function(){
 	// Binding the processInput function to submit button
-	$(document).on('click', '#checkAnswer', quizApp.processInput );
+	$(document).on('click', '#checkAnswer', quizApp.showAnswer );
 
 	// Prevent form from submitting
 	$(document).on('submit', '#choices', function(event){ event.preventDefault(); });
 
-
-	/** 
-	 * NOTE: You may want to add a "next" link instead of making this a click on the image.
-	 * I say this because in the way you had it originally, this would re-run the render function
-	 * without updating the currentQuestion, so it just goes back to the first.
-	 * 
-	 */
-
-	// Click handler for images
-	// $(document).on('click', '.images', quizApp.processInput );
+	// Added a function as a handler toAdding a function to handle the next button after answering the next button.
+	$(document).on('click', '#next', quizApp.nextHandler );
 };
 
 // 5- A way to go to next questions
-quizApp.processInput = function(event){
-	// Cancel form submission
-	event.preventDefault();
-
+quizApp.processInput = function(){
 	// Get the info for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
@@ -226,14 +195,13 @@ quizApp.processInput = function(event){
 		// Increment correct answers if correct
 		quizApp.totalCorrect++;	
 
-	} 
-	// 	Increment current question counter regardless of correctness
+	}
+	//	Increment current question counter regardless of correctness
 	
 
 	// Prepare container for content
-//	acontainer.empty();
-//	acontainer.fadeIn(500);
-
+	//	acontainer.empty();
+	//	acontainer.fadeIn(500);
 
 	// Prepare answer template
 	/** 
@@ -245,30 +213,14 @@ quizApp.processInput = function(event){
 	// acontainer.empty();
 	
 
-	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).fadeIn(900).append("<button id='next'>Next</button>");
-
-	$(document).on('click', '#next' , function(){
-	 	acontainer.css({'background-image': ''});
-	 	$('#next').remove();
-	 	 quizApp.currentQuestion++;
-	 	
-      quizApp.render();
-       console.log('clicked');
-    });
-
-	
+	 quizApp.currentQuestion++;
 		
-
-	
-
-
-
 
 	//qcontainer.empty();
 	// acontainer.append(answerTemplate);
 
 
-//acontainer.fadeOut(1500);
+	//acontainer.fadeOut(1500);
 
 	// 6- Display current place in quiz.
 	// Update UI to show current results
@@ -294,33 +246,57 @@ quizApp.processInput = function(event){
 		}, 1500);
 	};
 
+// Show answer function to handle initial answer submit. 
+// Shows the answer image, does not process the answer.
+quizApp.showAnswer = function(){
+	// Get the info for the current question
+	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
+	// Hiding qcontainer to show next button
+	qcontainer.fadeOut();
 
+	// Setting background and next button
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button id='next'>Next</button>").append("<div class='quote'>" +currentQuestionData.question+ "</div>");
+	//;
+	//acontainer.
+};
+
+// Adding a function to handle the next button after answering.
+// Runs the check to see if answer
+quizApp.nextHandler = function(){
+	// Clear content from itermediate answer screen
+	acontainer.css({'background-image': ''});
+	$(this).unbind('click').remove();	// this is the next button
+	$('.quote').remove();
+	// Handles the answer checking
+	quizApp.processInput();
+
+	// Displays the next question
+	quizApp.render();
+};
 
 quizApp.finalScore = function(){
 
+	// Clearing the containers
 	qcontainer.empty();
 	scoreCard.empty();
+
+	// Set final score template
 	var finalscore= $('#finalscore');
-	//$('.bgImg').fadeIn(1000);
 	$('#background').addClass('bgImg');
-
-		scoreTemplate = "You scored "+quizApp.totalCorrect +" out of "+ quizApp.questionData.length ;
-
+	scoreTemplate = "You scored "+quizApp.totalCorrect +" out of "+ quizApp.questionData.length ;
+	
+	// Add final score to page
 	finalscore.text(scoreTemplate);
-		
-
-	};
+};
 
 
 
 // Get Page ready to go
 $(document).ready(function(){
-
-	// Do stuff after DOM content has been loaded
+	// Initialize the app after the DOM has loaded.
 	quizApp.init();
-	
-})
+});
 
 
 
