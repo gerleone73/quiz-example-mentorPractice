@@ -28,6 +28,7 @@ var next= $('#next');
 quizApp.questionData = [
 		{
             "question" : "Talent is luck. The important thing in life is courage.",
+            "dotsImage": "images/woody-allen-dots.jpg",
             "image" : "images/woody-allen2.jpg",
             "choices" : [
                             "David Carradine",
@@ -44,6 +45,8 @@ quizApp.questionData = [
         },
         {
             "question" : "If you cannot be the poet be the poem.",
+             "dotsImage": "images/david-carradine-dots.jpg",
+            
             "image" : "images/david-carradine2.jpg",
             "choices" : [
                             "David Carradine",
@@ -60,6 +63,7 @@ quizApp.questionData = [
         },
         {
             "question" : "Self –plagarism is style.",
+             "dotsImage": "images/alfred-hitchcock-dots.jpg",
             "image" : "images/alfred-hitchcock2.jpg",
             "choices" : [
                             "David Carradine",
@@ -75,7 +79,9 @@ quizApp.questionData = [
         },
           {
             "question" : "Its not where you take things from its where you take them too.",
+            "dotsImage": "images/jean-luc-godard-dots.jpg",
             "image" : "images/Jean-Luc-Godard2.jpg",
+             
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -91,7 +97,9 @@ quizApp.questionData = [
         },
           {
             "question" : "Be yourself, everyone else is already taken.",
+            "dotsImage": "images/oscar-wilde-dots.jpg",
             "image" : "images/oscar-wilde2.jpg",
+
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -106,6 +114,7 @@ quizApp.questionData = [
         },
          {
             "question" : "To practice any art no matter how well or how badly is a way to make your soul grow. So do it",
+            "dotsImage": "images/kurt-vonnegut-dots.jpg",
             "image" : "images/KURT-VONNEGUT2.jpg",
             "choices" : [
                             "David Carradine",
@@ -142,11 +151,17 @@ quizApp.render = function(){
 	qcontainer.empty();
 	qcontainer.fadeIn(600);
 
+	$('#wrapper').fadeIn(1400);
+
 	//acontainer.fadeOut(1500);
 	//currentQuestionData++;
 
+	
+
 	// Get the content for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
+
+	acontainer.css({'background-image': 'url("'+currentQuestionData.dotsImage+'")'})
 
 	// Create the html for the question template
 	var questionTemplate = "";
@@ -182,7 +197,7 @@ quizApp.bindUI = function(){
 	$(document).on('submit', '#choices', function(event){ event.preventDefault(); });
 
 	// Added a function as a handler toAdding a function to handle the next button after answering the next button.
-	$(document).on('click', '#next', quizApp.nextHandler );
+	$(document).on('click', '.quote', quizApp.nextHandler );
 };
 
 // 5- A way to go to next questions
@@ -263,8 +278,10 @@ quizApp.showAnswer = function(){
 	// Hiding qcontainer to show next button
 	qcontainer.fadeOut();
 
+	$('#wrapper').fadeOut(3600);
+
 	// Setting background and next button
-	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button id='next'>Next</button>").append("<div class='quote'>" +currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</div>");
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</button>");
 	//;
 	//acontainer.
 };
@@ -274,6 +291,7 @@ quizApp.showAnswer = function(){
 quizApp.nextHandler = function(){
 	// Clear content from itermediate answer screen
 	acontainer.css({'background-image': ''});
+
 	$(this).unbind('click').remove();	// this is the next button
 	$('.quote').remove();
 	// Handles the answer checking
