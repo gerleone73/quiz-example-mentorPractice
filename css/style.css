@@ -80,8 +80,7 @@ input[type=button]:hover {
   position: absolute;
   top:0;
   z-index: -1;
-  display:hidden;
-
+  opacity:0;
 }
 
 #next{

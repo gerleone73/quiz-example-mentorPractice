@@ -151,7 +151,7 @@ quizApp.render = function(){
 	qcontainer.empty();
 	qcontainer.fadeIn(600);
 
-	$('#wrapper').fadeIn(1400);
+	
 
 	//acontainer.fadeOut(1500);
 	//currentQuestionData++;
@@ -162,6 +162,8 @@ quizApp.render = function(){
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
 
 	acontainer.css({'background-image': 'url("'+currentQuestionData.dotsImage+'")'})
+
+	$('#wrapper').css({ opacity: 1 });
 
 	// Create the html for the question template
 	var questionTemplate = "";
@@ -278,7 +280,9 @@ quizApp.showAnswer = function(){
 	// Hiding qcontainer to show next button
 	qcontainer.fadeOut();
 
-	$('#wrapper').fadeOut(3600);
+	$('#wrapper').animate({ opacity: 0 }, 1700,function() {
+                    // Animation complete.
+                      });
 
 	// Setting background and next button
 	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</button>");
@@ -289,8 +293,13 @@ quizApp.showAnswer = function(){
 // Adding a function to handle the next button after answering.
 // Runs the check to see if answer
 quizApp.nextHandler = function(){
+
+	$('#wrapper').css({ opacity: 1 }, 100,function() {
+                    // Animation complete.
+                      });
 	// Clear content from itermediate answer screen
 	acontainer.css({'background-image': ''});
+
 
 	$(this).unbind('click').remove();	// this is the next button
 	$('.quote').remove();
