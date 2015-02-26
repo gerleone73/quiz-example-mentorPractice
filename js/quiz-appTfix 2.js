@@ -174,14 +174,6 @@ quizApp.render = function(){
 
 	$('#arrow').hide();
 
-
-	
-
-	//acontainer.fadeOut(1500);
-	//currentQuestionData++;
-
-	
-
 	// Get the content for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
 
@@ -217,7 +209,7 @@ quizApp.render = function(){
 // 4- A way to handle user input
 quizApp.bindUI = function(){
 	// Binding the processInput function to submit button
-	$(document).on('click', '#checkAnswer', quizApp.showAnswer );
+	$(document).on('click', '#checkAnswer', quizApp.processInput );
 
 	// Prevent form from submitting
 	$(document).on('submit', '#choices', function(event){ event.preventDefault(); });
@@ -239,6 +231,8 @@ quizApp.processInput = function(){
 		alert("Please select an answer");
 		return;
 	}
+
+	quizApp.showAnswer();
 
 	if( selectedItem == currentQuestionData.correct ){
 		// Increment correct answers if correct
@@ -264,38 +258,8 @@ quizApp.processInput = function(){
 	// acontainer.empty();
 	
 
-	 quizApp.currentQuestion++;
-		
-
-	//qcontainer.empty();
-	// acontainer.append(answerTemplate);
-
-
-	//acontainer.fadeOut(1500);
-
-	// 6- Display current place in quiz.
-	// Update UI to show current results
-	
-
-	//var doneTemplate ="";
-
-	doneTemplate = "You've answered " + quizApp.currentQuestion +" out of "+ quizApp.questionData.length + " questions" ;
-
-	scoreCard.html(doneTemplate);
-	qcontainer.fadeOut(1600);
-
-	//$('#finalscore').fadeIn( 600, function(){
-		setTimeout(function(){
-			// Render Next question if there is a next question
-			if( quizApp.questionData.length > quizApp.currentQuestion ){
-				quizApp.render();
-			} else {
-				//alert("You've reached the end of the quiz" );
-				quizApp.finalScore();
-				return;
-			}
-		}, 1500);
 	};
+	
 
 // Show answer function to handle initial answer submit. 
 // Shows the answer image, does not process the answer.
@@ -322,6 +286,29 @@ quizApp.showAnswer = function(){
 // Runs the check to see if answer
 quizApp.nextHandler = function(){
 
+	 quizApp.currentQuestion++;
+		
+	 var doneTemplate ="";
+
+	doneTemplate = "You've answered " + quizApp.currentQuestion +" out of "+ quizApp.questionData.length + " questions" ;
+
+	scoreCard.html(doneTemplate);
+
+	qcontainer.fadeOut(1600);
+
+	//$('#finalscore').fadeIn( 600, function(){
+		setTimeout(function(){
+			// Render Next question if there is a next question
+			if( quizApp.questionData.length > quizApp.currentQuestion ){
+				quizApp.render();
+			} else {
+				//alert("You've reached the end of the quiz" );
+				quizApp.finalScore();
+				return;
+			}
+		}, 1500);
+	
+
 	$('#wrapper').css({ opacity: 1 }, 100,function() {
                     // Animation complete.
                       });
@@ -334,7 +321,7 @@ quizApp.nextHandler = function(){
 	$('.quote').remove();
 
 	// Handles the answer checking
-	quizApp.processInput();
+	//quizApp.processInput();
 
 	// Displays the next question
 	quizApp.render();
@@ -353,6 +340,16 @@ quizApp.finalScore = function(){
 	
 	// Add final score to page
 	finalscore.text(scoreTemplate);
+
+	splash.fadeIn(500);
+	$('#start').html('Re-Start').on('click', function(){
+		finalscore.empty();
+
+		splash.fadeOut(1500);
+		//qcontainer.fadeIn(3500);
+		quizApp.render();
+		
+	})
 };
 
 
