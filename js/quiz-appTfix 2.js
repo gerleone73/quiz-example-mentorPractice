@@ -197,7 +197,7 @@ quizApp.render = function(){
 	});
 
 	// Adds submit button and closing form tag to choices template
-	choicesHTML += "<input type='button' id='checkAnswer' value='submit' /></form>";
+	choicesHTML += "<input type='button' id='checkAnswer' value='' /></form>";
 	
 	// Adds chioces template to main template
 	questionTemplate += choicesHTML;
