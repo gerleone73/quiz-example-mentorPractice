@@ -23,6 +23,7 @@ var scoreCard = $('#scorecard');
 var acontainerHTML= $('.images') [0];
 var acontainer = $(acontainerHTML);
 var next= $('#next'); 
+var splash =$('#splash');
 
 // 2- Contain all of our question data
 quizApp.questionData = [
@@ -133,13 +134,33 @@ quizApp.questionData = [
 // Function to start the app
 quizApp.init = function(){
 	// Prints content to the page
-	this.render();
+//	this.render();
+	this.startpage();
 
 	// Prepares bindings on elements for event handlers
 	this.bindUI();	
 
 
 };
+
+quizApp.startpage = function(){
+
+	$('#arrow').hide();
+
+		var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
+$('#wrapper').css({ opacity: 1 });
+	acontainer.css({'background-image': 'url("'+currentQuestionData.dotsImage+'")'})
+	//splash.css({'background': 'black', 'min-height': '100%', 'min-width': '100%'});
+	$('#start').on('click', function(){
+
+		splash.fadeOut(1500);
+		qcontainer.fadeIn(3500);
+		quizApp.render();
+		
+
+		
+	})
+}
 
 // 3- Fill in the html template to show the data
 // 3a - Need tp create the template
@@ -149,7 +170,10 @@ quizApp.render = function(){
 	//acontainer.empty();
 	//acontainer.fadeIn(600);
 	qcontainer.empty();
-	qcontainer.fadeIn(600);
+	qcontainer.fadeIn(3500);
+
+	$('#arrow').hide();
+
 
 	
 
@@ -280,15 +304,17 @@ quizApp.showAnswer = function(){
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
 	// Hiding qcontainer to show next button
-	qcontainer.fadeOut();
+	qcontainer.fadeOut(1500);
+
+	
 
 	$('#wrapper').animate({ opacity: 0 }, 1700,function() {
                     // Animation complete.
                       });
 
 	// Setting background and next button
-	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</button>");
-	//;
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</button>").fadeIn(4500);
+	$('#arrow').show();
 	//acontainer.
 };
 
@@ -303,8 +329,10 @@ quizApp.nextHandler = function(){
 	acontainer.css({'background-image': ''});
 
 
+
 	$(this).unbind('click').remove();	// this is the next button
 	$('.quote').remove();
+
 	// Handles the answer checking
 	quizApp.processInput();
 
@@ -331,6 +359,8 @@ quizApp.finalScore = function(){
 
 // Get Page ready to go
 $(document).ready(function(){
+
+
 	// Initialize the app after the DOM has loaded.
 	quizApp.init();
 });
