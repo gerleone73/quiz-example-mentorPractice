@@ -221,6 +221,8 @@ quizApp.processInput = function(){
 		quizApp.totalCorrect++;	
 
 	}
+
+	
 	//	Increment current question counter regardless of correctness
 	
 
@@ -251,11 +253,11 @@ quizApp.processInput = function(){
 	// Update UI to show current results
 	
 
-	var doneTemplate ="";
+	//var doneTemplate ="";
 
 	doneTemplate = "You've answered " + quizApp.currentQuestion +" out of "+ quizApp.questionData.length + " questions" ;
 
-	scoreCard.text(doneTemplate);
+	scoreCard.html(doneTemplate);
 	qcontainer.fadeOut(1600);
 
 	//$('#finalscore').fadeIn( 600, function(){
@@ -318,7 +320,7 @@ quizApp.finalScore = function(){
 
 	// Set final score template
 	var finalscore= $('#finalscore');
-	$('#background').addClass('bgImg');
+	//$('#background').addClass('bgImg');
 	scoreTemplate = "You scored "+quizApp.totalCorrect +" out of "+ quizApp.questionData.length ;
 	
 	// Add final score to page
