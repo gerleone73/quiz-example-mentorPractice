@@ -45,9 +45,9 @@ quizApp.questionData = [
         },
         {
             "question" : "If you cannot be the poet be the poem.",
-             "dotsImage": "images/david-carradine-dots.jpg",
+             "dotsImage": "images/david-carradine-flip-dots.jpg",
             
-            "image" : "images/david-carradine.jpg",
+            "image" : "images/david-carradine-flip.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
