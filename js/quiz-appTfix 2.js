@@ -30,7 +30,7 @@ quizApp.questionData = [
 		{
             "question" : "Talent is luck. The important thing in life is courage.",
             "dotsImage": "images/woody-allen-dots.jpg",
-            "image" : "images/woody-allen2.jpg",
+            "image" : "images/woody-allen.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -48,7 +48,7 @@ quizApp.questionData = [
             "question" : "If you cannot be the poet be the poem.",
              "dotsImage": "images/david-carradine-dots.jpg",
             
-            "image" : "images/david-carradine2.jpg",
+            "image" : "images/david-carradine.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -65,7 +65,7 @@ quizApp.questionData = [
         {
             "question" : "Self –plagarism is style.",
              "dotsImage": "images/alfred-hitchcock-dots.jpg",
-            "image" : "images/alfred-hitchcock2.jpg",
+            "image" : "images/alfred-hitchcock.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -81,7 +81,7 @@ quizApp.questionData = [
           {
             "question" : "Its not where you take things from its where you take them too.",
             "dotsImage": "images/jean-luc-godard-dots.jpg",
-            "image" : "images/Jean-Luc-Godard2.jpg",
+            "image" : "images/jean-luc-godard.jpg",
              
             "choices" : [
                             "David Carradine",
@@ -99,7 +99,7 @@ quizApp.questionData = [
           {
             "question" : "Be yourself, everyone else is already taken.",
             "dotsImage": "images/oscar-wilde-dots.jpg",
-            "image" : "images/oscar-wilde2.jpg",
+            "image" : "images/oscar-wilde.jpg",
 
             "choices" : [
                             "David Carradine",
@@ -116,7 +116,7 @@ quizApp.questionData = [
          {
             "question" : "To practice any art no matter how well or how badly is a way to make your soul grow. So do it",
             "dotsImage": "images/kurt-vonnegut-dots.jpg",
-            "image" : "images/KURT-VONNEGUT2.jpg",
+            "image" : "images/kurt-vonnegut.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
