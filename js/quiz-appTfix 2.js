@@ -28,9 +28,9 @@ var splash =$('#splash');
 // 2- Contain all of our question data
 quizApp.questionData = [
 		{
-            "question" : "Talent is luck. The important thing in life is courage.",
-            "dotsImage": "images/woody-allen-dots.jpg",
-            "image" : "images/woody-allen.jpg",
+			"question" : "To practice any art no matter how well or how badly is a way to make your soul grow. So do it",
+            "dotsImage": "images/kurt-vonnegut-dots.jpg",
+            "image" : "images/kurt-vonnegut.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -39,10 +39,9 @@ quizApp.questionData = [
                             "Kurt Vonnegut",
                             "Oscar Wilde"
                         ],
-            "correct" : 1,
-            "theAnswer" : "Woody Allen"
-
-            
+            "correct" : 4,
+            "theAnswer" : "Kurt Vonnegut"
+  
         },
         {
             "question" : "If you cannot be the poet be the poem.",
@@ -81,7 +80,7 @@ quizApp.questionData = [
           {
             "question" : "Its not where you take things from its where you take them too.",
             "dotsImage": "images/jean-luc-godard-dots.jpg",
-            "image" : "images/jean-luc-godard.jpg",
+            "image" : "images/jean-luc-godard-small.jpg",
              
             "choices" : [
                             "David Carradine",
@@ -114,9 +113,9 @@ quizApp.questionData = [
             
         },
          {
-            "question" : "To practice any art no matter how well or how badly is a way to make your soul grow. So do it",
-            "dotsImage": "images/kurt-vonnegut-dots.jpg",
-            "image" : "images/kurt-vonnegut.jpg",
+             "question" : "Talent is luck. The important thing in life is courage.",
+            "dotsImage": "images/woody-allen-dots.jpg",
+            "image" : "images/woody-allen.jpg",
             "choices" : [
                             "David Carradine",
                             "Woody Allen",
@@ -125,8 +124,8 @@ quizApp.questionData = [
                             "Kurt Vonnegut",
                             "Oscar Wilde"
                         ],
-            "correct" : 4,
-            "theAnswer" : "Kurt Vonnegut"
+            "correct" : 1,
+            "theAnswer" : "Woody Allen"
             
         }
 ];
@@ -148,8 +147,8 @@ quizApp.startpage = function(){
 	$('#arrow').hide();
 
 		var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
-$('#wrapper').css({ opacity: 1 });
-	acontainer.css({'background-image': 'url("'+currentQuestionData.dotsImage+'")'})
+//$('#wrapper').css({ opacity: 1 });
+	acontainer.css({'background-image': 'url("images/woody-allen.jpg")'})
 	//splash.css({'background': 'black', 'min-height': '100%', 'min-width': '100%'});
 	$('#start').on('click', function(){
 
