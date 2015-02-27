@@ -89,7 +89,8 @@ body{
 	
   color:#ffe39f;
   font-style: italic;
-  padding: 2em 0;
+  padding-top: 1.5em;
+  padding-bottom:1em;
   font-size: 2em;
   line-height: 1.25em;
   color: #ffe39f;
@@ -101,7 +102,7 @@ body{
 
 
  #quizName{
-  padding-top:1em;
+  padding-top:.5em;
   color: orange;
   font-size:6.5em;
   line-height: 1em;
@@ -115,7 +116,7 @@ body{
 }
 
 #question-container{
-  padding-top: 11.5em;
+  padding-top: 9.5em;
   margin: 0 auto;
   line-height: 2em;
   width:80%;
@@ -220,11 +221,11 @@ font-style: normal;
   }
 
   #choices{
-    margin-top: -1em;
+    margin-top: .75em;
   }
 
   #question-container{
-    padding-top: 12.5em;
+    padding-top: 15em;
   }
   .quote{
     font-size: 1em;
