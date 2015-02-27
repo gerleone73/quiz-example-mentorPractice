@@ -72,11 +72,11 @@ body{
 }
 
 #scorecard{
-	font-weight: 300;
+	font-weight: 400;
   margin-top: 10em;
   margin: 0 auto;
   width:80%;
-  padding-left: 10%;
+  padding-left: 5%;
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
   font-size: 1em;
@@ -103,12 +103,12 @@ body{
  #quizName{
   padding-top:1em;
   color: orange;
-  font-size:6em;
+  font-size:6.5em;
   line-height: 1em;
   margin: 0 auto;
 	text-align: left;
   width:80%;
-  padding-left: 10%;
+  padding-left: 5%;
   z-index: 100;
   font-family:'Alegreya-Regular-webfont';
  
@@ -119,7 +119,7 @@ body{
   margin: 0 auto;
   line-height: 2em;
   width:80%;
-  padding-left:10%;
+  padding-left:5%;
 }
 
 
@@ -181,7 +181,7 @@ input[type=button]:hover {
   font-weight: 800;
 letter-spacing: .1em!important;
 display:none;
-font-family: 'Open Sans', sans-serif;
+
 text-transform: uppercase;
 
 font-style: normal;
@@ -209,7 +209,19 @@ font-style: normal;
   display: none;
 }
 
-@media (max-width: 480px){
+@media only screen and (max-width: 750px){ 
+
+  #quizName{
+    padding-top: 0.25em;
+  }
+
+  #scorecard{
+    font-size: .75em;
+  }
+
+  #choices{
+    margin-top: -1em;
+  }
 
   #question-container{
     padding-top: 12.5em;
