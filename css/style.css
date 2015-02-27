@@ -13,6 +13,8 @@ html, html a{
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
 
+input, textarea, button, select, a { outline: none; }
+
 
 
 body{
@@ -45,10 +47,11 @@ body{
  /* background-color: #464646;*/
   color:orange;
   z-index: -2;
+
 }
 
 #wrapper{
-  background-color: rgba(0,0,0, .8);
+  background-color: rgba(0,0,0, .9);
   height:100%;
   width:100%;
   position: absolute;
@@ -62,6 +65,7 @@ body{
 #choices{
   font-size:1.5em;
   margin-bottom: 1em;
+  color:#ffe39f;
 }
 
 #scorecard{
@@ -76,7 +80,8 @@ body{
 
 .questionText{
 	
-  color:orange;
+  color:#ffe39f;
+  font-style: italic;
   padding: 2em 0;
   font-size: 1.75em;
   line-height: 1.25em;
@@ -103,7 +108,7 @@ body{
 }
 
 #question-container{
-  padding-top: 7em;
+  padding-top: 9.5em;
   margin: 0 auto;
   line-height: 2em;
   width:80%;
@@ -162,20 +167,34 @@ input[type=button]:hover {
   text-align: center;
   margin: 0 auto;
   cursor: pointer;
+  
+}
+
+#start{
+  font-weight: bold;
+display:none;
 }
 
 .quote:hover, #start:hover{
    background-color: rgba(255,153,0, 1);
 }
 
+#bold{
+  font-weight: bold;
+}
+
 #arrow{
   color: black;
+  font-style: normal;
   position:absolute;
-  bottom: .9em;
+  bottom: .6em;
   right:.5em;
-  font-size: 2em;
-  
-
+  font-size: 1.5em;
 
 }
+
+#splash{
+  display: none;
+}
+
 

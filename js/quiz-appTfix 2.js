@@ -28,7 +28,7 @@ var splash =$('#splash');
 // 2- Contain all of our question data
 quizApp.questionData = [
 		{
-			"question" : "To practice any art no matter how well or how badly is a way to make your soul grow. So do it",
+			"question" : '" To practice any art no matter how well or how badly <br/> is a way to make your soul grow. "',
             "dotsImage": "images/kurt-vonnegut-dots.jpg",
             "image" : "images/kurt-vonnegut.jpg",
             "choices" : [
@@ -37,14 +37,14 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
                         ],
             "correct" : 4,
             "theAnswer" : "Kurt Vonnegut"
   
         },
         {
-            "question" : "If you cannot be the poet be the poem.",
+            "question" : '" If you cannot be the poet be the poem. "',
              "dotsImage": "images/david-carradine-flip-dots.jpg",
             
             "image" : "images/david-carradine-flip.jpg",
@@ -54,7 +54,7 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
             				
                         ],
             "correct" : 0,
@@ -62,7 +62,7 @@ quizApp.questionData = [
             
         },
         {
-            "question" : "Self –plagarism is style.",
+            "question" : '" Self –plagarism is style. "',
              "dotsImage": "images/alfred-hitchcock-dots.jpg",
             "image" : "images/alfred-hitchcock.jpg",
             "choices" : [
@@ -71,14 +71,14 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
                         ],
             "correct" : 3,
             "theAnswer" : "Alfred Hitchcock"
             
         },
           {
-            "question" : "Its not where you take things from its where you take them too.",
+            "question" : '" Its not where you take things from its where you take them too. "',
             "dotsImage": "images/jean-luc-godard-dots.jpg",
             "image" : "images/jean-luc-godard-small.jpg",
              
@@ -88,7 +88,7 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
                         ],
             "correct" : 2,
             "theAnswer" : "Jean Luc Godard"
@@ -96,9 +96,9 @@ quizApp.questionData = [
            
         },
           {
-            "question" : "Be yourself, everyone else is already taken.",
-            "dotsImage": "images/oscar-wilde-dots.jpg",
-            "image" : "images/oscar-wilde.jpg",
+            "question" : '" All serious artists should strive towards simplicity. "',
+            "dotsImage": "images/robert-bresson-dots.png",
+            "image" : "images/robert-bresson.jpg",
 
             "choices" : [
                             "David Carradine",
@@ -106,14 +106,14 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
                         ],
             "correct" : 5,
-            "theAnswer" : "Oscar Wilde"
+            "theAnswer" : "Robert Bresson"
             
         },
          {
-             "question" : "Talent is luck. The important thing in life is courage.",
+             "question" : '" Talent is luck. The important thing in life is courage. "',
             "dotsImage": "images/woody-allen-dots.jpg",
             "image" : "images/woody-allen.jpg",
             "choices" : [
@@ -122,7 +122,7 @@ quizApp.questionData = [
                             "Jean Luc Godard",
                             "Alfred Hitchcock",
                             "Kurt Vonnegut",
-                            "Oscar Wilde"
+                            "Robert Bresson"
                         ],
             "correct" : 1,
             "theAnswer" : "Woody Allen"
@@ -144,16 +144,22 @@ quizApp.init = function(){
 
 quizApp.startpage = function(){
 
-	$('#arrow').hide();
+    splash.fadeIn(1500);
+	$('#start').fadeIn(1500).html('Start');
+	scoreCard.html('( Words of wisedom from six wise men... )')
 
-		var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
+
+
+	//	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
 //$('#wrapper').css({ opacity: 1 });
 	acontainer.css({'background-image': 'url("images/woody-allen.jpg")'})
 	//splash.css({'background': 'black', 'min-height': '100%', 'min-width': '100%'});
+
 	$('#start').on('click', function(){
+		
 
 		splash.fadeOut(1500);
-		qcontainer.fadeIn(3500);
+	//	qcontainer.fadeIn(3500);
 		quizApp.render();
 		
 
@@ -168,10 +174,14 @@ quizApp.render = function(){
 	// Empty question wrapper before adding content ie each question	
 	//acontainer.empty();
 	//acontainer.fadeIn(600);
+	
+
+
 	qcontainer.empty();
 	qcontainer.fadeIn(3500);
 
-	$('#arrow').hide();
+	if( quizApp.questionData.length > quizApp.currentQuestion ){
+
 
 	// Get the content for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion]; // quizApp.currentQuestion = 0;
@@ -203,6 +213,8 @@ quizApp.render = function(){
 
 	// Add template to the page
 	qcontainer.append(questionTemplate);
+
+}
 };
 
 // 4- A way to handle user input
@@ -230,6 +242,8 @@ quizApp.processInput = function(){
 		alert("Please select an answer");
 		return;
 	}
+
+
 
 	quizApp.showAnswer();
 
@@ -266,6 +280,9 @@ quizApp.showAnswer = function(){
 	// Get the info for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
+
+
+
 	// Hiding qcontainer to show next button
 	qcontainer.fadeOut(1500);
 
@@ -276,24 +293,32 @@ quizApp.showAnswer = function(){
                       });
 
 	// Setting background and next button
-	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +currentQuestionData.theAnswer+ "</button>").fadeIn(4500);
-	$('#arrow').show();
+	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +"<span id ='bold'>"+currentQuestionData.theAnswer+ "</span>"+"<span id ='arrow'>&#8594;</span></button>");
+	
+	acontainer.fadeIn(1500);
 	//acontainer.
+	quizApp.currentQuestion++;
+
+	var doneTemplate ="";
+
+	doneTemplate = "( You've put a name to " + quizApp.currentQuestion +" of  the "+ quizApp.questionData.length + " quotes. )" ;
+
+	scoreCard.html(doneTemplate);
+
+
 };
 
 // Adding a function to handle the next button after answering.
 // Runs the check to see if answer
 quizApp.nextHandler = function(){
 
-	 quizApp.currentQuestion++;
+
+
+	
 		
-	 var doneTemplate ="";
+	 
 
-	doneTemplate = "You've answered " + quizApp.currentQuestion +" out of "+ quizApp.questionData.length + " questions" ;
-
-	scoreCard.html(doneTemplate);
-
-	qcontainer.fadeOut(1600);
+	qcontainer.fadeOut(1500);
 
 	//$('#finalscore').fadeIn( 600, function(){
 		setTimeout(function(){
@@ -301,7 +326,9 @@ quizApp.nextHandler = function(){
 			if( quizApp.questionData.length > quizApp.currentQuestion ){
 				quizApp.render();
 			} else {
-				//alert("You've reached the end of the quiz" );
+				$('#wrapper').css('opacity', '0');
+
+					acontainer.css({'background-image': 'url("images/woody-allen.jpg")'})
 				quizApp.finalScore();
 				return;
 			}
@@ -330,24 +357,23 @@ quizApp.finalScore = function(){
 
 	// Clearing the containers
 	qcontainer.empty();
-	scoreCard.empty();
+	//scoreCard.empty();
 
-	// Set final score template
-	var finalscore= $('#finalscore');
+	
+
+	// Set final score template NOTE USING SCORECARD!!
+	//var finalscore= $('#finalscore');
 	//$('#background').addClass('bgImg');
-	scoreTemplate = "You scored "+quizApp.totalCorrect +" out of "+ quizApp.questionData.length ;
+	scoreTemplate = "( You got "+quizApp.totalCorrect +" out of the "+ quizApp.questionData.length + " correct! )";
 	
 	// Add final score to page
-	finalscore.text(scoreTemplate);
+	scoreCard.html(scoreTemplate);
 
-	splash.fadeIn(500);
-	$('#start').html('Re-Start').on('click', function(){
-		finalscore.empty();
+	splash.fadeIn(1500);
+	$('#start').html('Back to Start').on('click', function(){
 
-		splash.fadeOut(1500);
-		//qcontainer.fadeIn(3500);
-		quizApp.render();
-		
+	location.reload();
+			
 	})
 };
 
