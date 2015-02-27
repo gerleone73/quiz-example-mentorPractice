@@ -29,6 +29,7 @@ var splash =$('#splash');
 quizApp.questionData = [
 		{
 			"question" : '" To practice any art no matter how well or how badly <br/> is a way to make your soul grow. "',
+			"questionNB" : '" To practice any art no matter how well or how badly is a way to make your soul grow. "',
             "dotsImage": "images/kurt-vonnegut-dots.jpg",
             "image" : "images/kurt-vonnegut.jpg",
             "choices" : [
@@ -292,9 +293,15 @@ quizApp.showAnswer = function(){
                     // Animation complete.
                       });
 
+	if(currentQuestionData.question[0]){
+			acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.questionNB+ " - " +"<span id ='bold'>"+currentQuestionData.theAnswer+ "</span>"+"<span id ='arrow'>&#8594;</span></button>");
+
+	}else{
+
 	// Setting background and next button
 	acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.question+ " - " +"<span id ='bold'>"+currentQuestionData.theAnswer+ "</span>"+"<span id ='arrow'>&#8594;</span></button>");
-	
+	}
+
 	acontainer.fadeIn(1500);
 	//acontainer.
 	quizApp.currentQuestion++;
