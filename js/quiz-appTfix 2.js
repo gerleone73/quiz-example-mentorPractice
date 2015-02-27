@@ -289,7 +289,7 @@ quizApp.showAnswer = function(){
 
 	
 
-	$('#wrapper').animate({ opacity: 0 }, 1700,function() {
+	$('#wrapper').animate({ opacity: 0 }, 2000,function() {
                     // Animation complete.
                       });
 
@@ -327,19 +327,21 @@ quizApp.nextHandler = function(){
 		
 	 
 
-	qcontainer.fadeOut(1500);
+	//qcontainer.fadeOut(1500);
 
 	//$('#finalscore').fadeIn( 600, function(){
 		setTimeout(function(){
 			// Render Next question if there is a next question
 			if( quizApp.questionData.length > quizApp.currentQuestion ){
 				quizApp.render();
+				return;
 			} else {
 				$('#wrapper').css('opacity', '0');
+				qcontainer.fadeOut(1500);
 
 					acontainer.css({'background-image': 'url("images/woody-allen.jpg")'})
 				quizApp.finalScore();
-				return;
+				
 			}
 		}, 1500);
 	

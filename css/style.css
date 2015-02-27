@@ -21,6 +21,7 @@ body{
   background-color: #464646;
   line-height: 1.2em;
   font-size: 100%;
+  letter-spacing: 0.05em;
   font-family:'Alegreya-Regular-webfont';
 }
 
@@ -156,7 +157,7 @@ input[type=button]:hover {
 
 .quote, #start{
  background-color: rgba(255,153,0,.7);
-  padding: 1em;
+  padding: .75em 0;
   color:black;
   position: absolute;
   bottom:0%;
@@ -187,7 +188,7 @@ display:none;
   color: black;
   font-style: normal;
   position:absolute;
-  bottom: .6em;
+  bottom: .45em;
   right:.5em;
   font-size: 1.5em;
 
@@ -197,4 +198,19 @@ display:none;
   display: none;
 }
 
+@media (max-width: 480px){
 
+  #question-container{
+    padding-top: 12.5em;
+  }
+  .quote{
+    font-size: 1em;
+     padding:1.25em 0;
+  }
+
+  #arrow{
+    font-size: 1em;
+    bottom: 1em;
+    right: .2em;
+  }
+}
