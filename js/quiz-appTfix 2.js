@@ -293,7 +293,9 @@ quizApp.showAnswer = function(){
                     // Animation complete.
                       });
 
-	if(currentQuestionData.question[0]){
+
+
+	if(quizApp.currentQuestion == 0){
 			acontainer.css({'background-image': 'url("'+currentQuestionData.image+'")'}).append("<button class='quote'>"+currentQuestionData.questionNB+ " - " +"<span id ='bold'>"+currentQuestionData.theAnswer+ "</span>"+"<span id ='arrow'>&#8594;</span></button>");
 
 	}else{
