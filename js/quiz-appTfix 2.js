@@ -178,7 +178,7 @@ quizApp.render = function(){
 	
 
 
-	qcontainer.empty();
+	qcontainer.empty(); // IS THIS IS BEST PLACE?? PERHAPS MOVE TO NEXTHANDLER()
 	qcontainer.fadeIn(3500);
 
 	if( quizApp.questionData.length > quizApp.currentQuestion ){
@@ -203,7 +203,8 @@ quizApp.render = function(){
 
 	// Adds the array items the choices html string
 	$.each( currentQuestionData.choices, function( counter, choice ){
-		choicesHTML += "<input type='radio' name='mustbesamename' value='"+counter+"' />" + choice + "<br />"; // "<label for =''>" ++ "</label><br />";
+		choicesHTML += "<label><input type='radio' name='mustbesamename' value='"+counter+"' />" + choice + "</label>"+"<br />";
+
 	});
 
 	// Adds submit button and closing form tag to choices template
@@ -215,6 +216,12 @@ quizApp.render = function(){
 	// Add template to the page
 	qcontainer.append(questionTemplate);
 
+	$('#choices label').click(function() {
+  $(this).addClass("selected").siblings().removeClass("selected");
+  });
+
+
+
 }
 };
 
@@ -223,8 +230,14 @@ quizApp.bindUI = function(){
 	// Binding the processInput function to submit button
 	$(document).on('click', '#checkAnswer', quizApp.processInput );
 
+
+
 	// Prevent form from submitting
-	$(document).on('submit', '#choices', function(event){ event.preventDefault(); });
+	$(document).on('submit', '#choices', function(event){ event.preventDefault();
+		
+		
+
+	});
 
 	// Added a function as a handler toAdding a function to handle the next button after answering the next button.
 	$(document).on('click', '.quote', quizApp.nextHandler );
@@ -232,15 +245,23 @@ quizApp.bindUI = function(){
 
 // 5- A way to go to next questions
 quizApp.processInput = function(){
+
+	 $("a.close").click(function() {
+        $(".overlay").fadeOut(1000);
+    });
+
+
 	// Get the info for the current question
 	var currentQuestionData = quizApp.questionData[quizApp.currentQuestion];
 
 	// Get the current selected choice and turn string '0' into a numnber 1
 	var selectedItem = parseInt($(":checked").val(), 10);
+
+
 	
 	// check if selected & Compare it to the correct answer 
 	if ( isNaN(selectedItem) ){ 
-		alert("Please select an answer");
+		$(".overlay").fadeIn(1000);
 		return;
 	}
 
@@ -355,7 +376,7 @@ quizApp.nextHandler = function(){
 
 
 	$(this).unbind('click').remove();	// this is the next button
-	$('.quote').remove();
+	$('.quote').remove();// unnecaessary as above does same
 
 	// Handles the answer checking
 	//quizApp.processInput();
