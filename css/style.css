@@ -300,12 +300,15 @@ font-style: normal;
 
 @media only screen and (max-width: 750px){ 
 
+  
+
   #quizName{
-    padding-top: 0.25em;
+    padding-top: 0.5em;
+    font-size: 3em;
   }
 
   #scorecard{
-    font-size: .75em;
+    font-size: .5em;
   }
 
   #choices{
@@ -313,7 +316,8 @@ font-style: normal;
   }
 
   #question-container{
-    padding-top: 15em;
+    padding-top: 8em;
+    font-size: .6em;
   }
   .quote{
     font-size: 1em;
