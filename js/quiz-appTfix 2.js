@@ -25,6 +25,25 @@ var acontainer = $(acontainerHTML);
 var next= $('#next'); 
 var splash =$('#splash');
 
+$.preloadImages = function() {
+  for (var i = 0; i < arguments.length; i++) {
+    $("<img />").attr("src", arguments[i]);
+  }
+}
+
+$.preloadImages("images/kurt-vonnegut-dots.jpg",
+				"images/kurt-vonnegut.jpg",
+				"images/david-carradine-flip-dots.jpg",
+				"images/david-carradine-flip.jpg",
+				"images/alfred-hitchcock-dots.jpg",
+				"images/alfred-hitchcock.jpg",
+				"images/jean-luc-godard-dots.jpg",
+				"images/jean-luc-godard-small.jpg",
+				"images/robert-bresson-dots.png",
+				"images/robert-bresson.jpg",
+				"images/woody-allen-dots.jpg",
+				"images/woody-allen.jpg");
+
 // 2- Contain all of our question data
 quizApp.questionData = [
 		{
