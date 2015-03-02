@@ -20,16 +20,27 @@ slideDown
 
 
 .slideDown{
+
+	
+
 	animation-name: slideDown;
 	-webkit-animation-name: slideDown;	
+	-moz-animation-name: slideDown;	
+
 
 	animation-duration: 1.75s;	
 	-webkit-animation-duration: 1.75s;
+	-mos-animation-duration: 1.75s;
 
 	animation-timing-function: ease;	
-	-webkit-animation-timing-function: ease;	
+	-moz-animation-timing-function: ease;	
+	-webkit-animation-delay: .5s;
+  -moz-animation-delay: .5s; /* Chrome, Safari, Opera */
+    animation-delay: .5s;
 
-	visibility: visible !important;						
+
+	visibility: visible;	
+
 }
 
 @keyframes slideDown {

@@ -134,6 +134,7 @@ body{
   text-transform: uppercase;
   font-size: 1em;
   color:#ffe39f;
+  display:none;
 }
 
 
@@ -157,6 +158,7 @@ body{
 
 
  #quizName{
+  visibility: hidden;
   padding-top:.5em;
   color: orange;
   font-size:6.25em;
@@ -167,9 +169,79 @@ body{
   padding-left: 5%;
   z-index: 100;
   font-family:'Alegreya-Regular-webfont';
-  visibility: hidden;
- 
 }
+
+
+/*
+==============================================
+slideDown
+==============================================
+*/
+
+
+.slideDown{
+
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;  
+  -moz-animation-name: slideDown; 
+
+  animation-duration: 1.75s;  
+  -webkit-animation-duration: 1.75s;
+  -mos-animation-duration: 1.75s;
+
+  animation-timing-function: ease;  
+  -moz-animation-timing-function: ease; 
+
+  opacity: 1!important;
+
+  visibility: visible!important;  
+
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%{
+    transform: translateY(8%);
+  }
+  65%{
+    transform: translateY(-4%);
+  }
+  80%{
+    transform: translateY(4%);
+  }
+  95%{
+    transform: translateY(-2%);
+  }     
+  100% {
+    transform: translateY(0%);
+  }   
+}
+
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  50%{
+    -webkit-transform: translateY(8%);
+  }
+  65%{
+    -webkit-transform: translateY(-4%);
+  }
+  80%{
+    -webkit-transform: translateY(4%);
+  }
+  95%{
+    -webkit-transform: translateY(-2%);
+  }     
+  100% {
+    -webkit-transform: translateY(0%);
+  } 
+}
+
+
+
 
 #question-container{
   padding-top: 9.5em;

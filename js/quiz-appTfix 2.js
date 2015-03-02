@@ -166,9 +166,16 @@ quizApp.init = function(){
 
 quizApp.startpage = function(){
 
+	    setTimeout(function(){
+      $('#quizName').css('opacity', '0').addClass('slideDown');
+   }, 400);
+
+
+	
+
     splash.fadeIn(1500);
 	$('#start').fadeIn(1500).html('Start');
-	scoreCard.html('( Words of wisedom from six wise men... )')
+	scoreCard.fadeIn(1500).html('( Words of wisedom from six wise men... )')
 
 
 
