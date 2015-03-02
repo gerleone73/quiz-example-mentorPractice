@@ -44,6 +44,8 @@ $.preloadImages("images/kurt-vonnegut-dots.jpg",
 				"images/woody-allen-dots.jpg",
 				"images/woody-allen.jpg");
 
+
+
 // 2- Contain all of our question data
 quizApp.questionData = [
 		{
